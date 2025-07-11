@@ -1,0 +1,39 @@
+{
+  "name": "sport-area-stp",
+  "version": "1.0.0",
+  "description": "Aplikasi Booking Lapangan Sport Area STP",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "migrate:dev": "npx prisma migrate dev",
+    "migrate:reset": "npx prisma migrate reset",
+    "migrate:prod": "npx prisma migrate deploy",
+    "generate": "npx prisma generate",
+    "studio": "npx prisma studio",
+    "seed": "npx prisma db seed",
+    "db:pull": "npx prisma db pull",
+    "db:push": "npx prisma db push",
+    "test": "echo \"No tests defined\" && exit 0"
+  },
+  "author": "Your Name",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^6.10.1",
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.0.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "node-cron": "^4.2.0",
+    "pdfkit": "^0.17.1",
+    "prisma": "^6.10.1",
+    "puppeteer": "^24.11.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "prisma": {
+    "seed": "node src/prisma/seed.js"
+  }
+}

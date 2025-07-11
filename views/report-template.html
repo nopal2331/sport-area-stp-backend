@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+      }
+      .header {
+        position: relative;
+        margin-bottom: 10px;
+      }
+
+      .logo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100px;
+        height: auto;
+      }
+
+      h2,
+      h3 {
+        text-align: center;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      td,
+      th {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+      }
+      .no-border td {
+        border: none;
+      }
+      .right {
+        text-align: right;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="right">Tanggal: {{tanggalCetak}}</div>
+    <div class="header">
+      <img
+        src="http://localhost:3000/uploads/reports/logo.png"
+        alt="Logo"
+        class="logo"
+      />
+      <h2>SPORT CENTER AREA - SOLO TECHNOPARK</h2>
+      <p style="text-align: center">
+        Jl. Ki Hajar Dewantara No.19, Jebres, Surakarta, Jawa Tengah 57126
+      </p>
+    </div>
+    <hr />
+    <h3>BUKTI RESERVASI LAPANGAN</h3>
+
+    <table class="no-border">
+      <tr>
+        <td>ID</td>
+        <td>: {{lapanganId}}{{bookingId}}</td>
+      </tr>
+      <tr>
+        <td>Nama Pemain</td>
+        <td>: {{nama}}</td>
+      </tr>
+      <tr>
+        <td>No. Handphone</td>
+        <td>: {{phone}}</td>
+      </tr>
+      <tr>
+        <td>Disetujui Oleh</td>
+        <td>: {{disetujuiOleh}}</td>
+      </tr>
+    </table>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Jenis Lapangan</th>
+          <th>Tanggal</th>
+          <th>Waktu</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{lapangan}}</td>
+          <td>{{tanggalBooking}}</td>
+          <td>{{jam}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

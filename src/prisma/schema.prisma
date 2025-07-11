@@ -1,0 +1,65 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         Int      @id @default(autoincrement())
+  name       String
+  email      String   @unique
+  phone      String   @unique
+  password   String
+  role       Role
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  bookings  Booking[] @relation("UserBookings")
+  approvals Booking[] @relation("AdminApprovals")
+}
+
+model Booking {
+  id          Int           @id @default(autoincrement())
+  user_id     Int
+  approved_by Int?
+  field_type  FieldType
+  date        DateTime
+  time_slot   String
+  status      BookingStatus
+  created_at  DateTime      @default(now())
+  updated_at  DateTime      @updatedAt
+
+  user   User    @relation("UserBookings", fields: [user_id], references: [id])
+  admin  User?   @relation("AdminApprovals", fields: [approved_by], references: [id])
+  report Report?
+}
+
+model Report {
+  id           Int      @id @default(autoincrement())
+  booking_id   Int?     @unique
+  file_name    String
+  file_path    String
+  generated_at DateTime @default(now())
+
+  booking Booking? @relation(fields: [booking_id], references: [id], onDelete: SetNull)
+}
+
+enum Role {
+  user
+  admin
+}
+
+enum FieldType {
+  basket
+  futsal
+}
+
+enum BookingStatus {
+  pending
+  approved
+  rejected
+  expired
+}
